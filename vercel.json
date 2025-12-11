@@ -1,35 +1,14 @@
 {
-  "buildCommand": "pip install -r requirements.txt",
-  "outputDirectory": ".",
-  "framework": "flask",
   "builds": [
     {
       "src": "app.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "250mb",
-        "runtime": "python3.11"
-      }
+      "use": "@vercel/python"
     }
   ],
   "routes": [
     {
-      "src": "/static/(.*)",
-      "dest": "/web/static/$1"
-    },
-    {
       "src": "/(.*)",
       "dest": "/app.py"
-    }
-  ],
-  "env": {
-    "FLASK_ENV": "production",
-    "FLASK_APP": "app.py"
-  },
-  "envVars": [
-    {
-      "key": "SESSION_SECRET",
-      "description": "Secret key for Flask session management"
     }
   ]
 }
