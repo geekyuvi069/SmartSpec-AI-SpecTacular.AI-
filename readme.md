@@ -185,72 +185,23 @@ The system is specifically designed for environments requiring complete offline 
 
 ## 🌐 Deployment
 
-### Local Development
-```bash
-python app.py
-```
-Server runs on `http://127.0.0.1:5000` with automatic reloading on code changes.
+### Recommended: Railway.app ⭐
 
-### Production (Gunicorn)
-```bash
-gunicorn -w 4 -b 0.0.0.0:5000 app:app
-```
+Railway is perfect for Python/ML projects - no size limits, easy setup.
 
-### Docker Deployment
-```bash
-docker build -t spectacular-ai .
-docker run -p 5000:5000 -v $(pwd)/data:/app/data spectacular-ai
-```
+1. **Go to https://railway.app** and sign up with GitHub
+2. **Create new project** → Import from GitHub repository
+3. **Set environment variables:**
+   - `FLASK_ENV`: `production`
+   - `SESSION_SECRET`: [generate a secure key]
+4. **Deploy** - Automatic on every git push
 
-### Vercel Deployment
+### Alternative Platforms
+- **Render.com** - Good Flask support
+- **Docker** - Full local/cloud control
+- **AWS/GCP** - Enterprise deployments
 
-This Flask application can be deployed to Vercel using the Python runtime. Here's how:
-
-1. **Create a `vercel.json` configuration:**
-   ```json
-   {
-     "builds": [
-       {
-         "src": "app.py",
-         "use": "@vercel/python"
-       }
-     ],
-     "routes": [
-       {
-         "src": "/(.*)",
-         "dest": "/app.py"
-       }
-     ],
-     "env": {
-       "FLASK_ENV": "production",
-       "FLASK_APP": "app.py",
-       "SESSION_SECRET": "@session_secret"
-     }
-   }
-   ```
-
-2. **Install Vercel CLI:**
-   ```bash
-   npm install -g vercel
-   ```
-
-3. **Deploy:**
-   ```bash
-   vercel
-   ```
-
-4. **Add environment variables in Vercel dashboard:**
-   - Go to Settings → Environment Variables
-   - Add `SESSION_SECRET` with a secure random value
-
-5. **Vercel Limitations & Alternatives:**
-   - ⚠️ Vercel serverless has function limits (10 seconds max execution)
-   - ⚠️ Model downloads may timeout on first run
-   - **Better Alternatives for Full AI Capability:**
-     - **Railway.app** - Better Python/ML support
-     - **Render** - Good for Flask + ML workloads  
-     - **AWS/GCP** - Enterprise deployments
-     - **Self-hosted** - Full control and offline operation
+See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed guides on all platforms.
 
 ## 📦 Project Structure
 
