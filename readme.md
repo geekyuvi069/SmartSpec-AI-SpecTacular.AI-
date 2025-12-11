@@ -185,19 +185,23 @@ The system is specifically designed for environments requiring complete offline 
 
 ## 🌐 Deployment
 
-### Recommended: Railway.app ⭐
+### Recommended: Render.com ⭐
 
-Railway is perfect for Python/ML projects - no size limits, easy setup.
+Render is perfect for Flask/Python projects - easy setup, great ML support.
 
-1. **Go to https://railway.app** and sign up with GitHub
-2. **Create new project** → Import from GitHub repository
-3. **Set environment variables:**
+1. **Go to https://render.com** and sign up with GitHub
+2. **New Web Service** → Connect your GitHub repository
+3. **Configure:**
+   - **Environment**: Python
+   - **Build Command**: `pip install -r requirements.txt`
+   - **Start Command**: `gunicorn -w 4 -b 0.0.0.0:5000 app:app`
+4. **Add Environment Variables:**
    - `FLASK_ENV`: `production`
    - `SESSION_SECRET`: [generate a secure key]
-4. **Deploy** - Automatic on every git push
+5. **Deploy!** - Auto-deploys on git push
 
 ### Alternative Platforms
-- **Render.com** - Good Flask support
+- **Railway.app** - Also great for Python/ML
 - **Docker** - Full local/cloud control
 - **AWS/GCP** - Enterprise deployments
 
